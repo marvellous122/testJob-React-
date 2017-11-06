@@ -1,0 +1,35 @@
+.navbar > div {
+  padding: 0;
+}
+
+.sidebar > div {
+  padding: 0;
+}
+
+.navbar-brand {
+  color: #ccc !important;
+}
+
+.sidebar-menu:hover {
+  background-color: #666;
+}
+
+.sidebar-menu:hover > a {
+  color: black !important;
+}
+
+.dropdown-menu,
+.sidebar-menu > a {
+  width: 100%;
+  color: #ccc !important;
+  min-height: 35px;
+  line-height: 35px;
+}
+
+.active > a {
+  color: #666 !important;
+}
+
+.active:hover > a {
+  color: black;
+}

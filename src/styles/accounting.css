@@ -1,0 +1,27 @@
+.accounting-content .table-responsive {
+  overflow: inherit;
+}
+
+.accounting-content .dropdown-menu {
+  min-width: 0;
+  padding: 0 0;
+  font-size: 12px;
+  text-align: center;
+}
+
+.accounting-content .dropdown-menu .divider {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.accounting-content .button-table {
+  border: 0 !important;
+}
+
+.accounting-content .button-table thead tr {
+  background-color: transparent !important;
+}
+
+.accounting-content .button-table tr th, .accounting-content .button-table tr td {
+  border: 0 !important;
+}

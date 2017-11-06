@@ -1,0 +1,47 @@
+i.nav {
+  margin-right: 15px;
+}
+
+i.help:hover {
+  color: #549fc4;
+}
+
+.leftBar {
+  width: 100px;
+}
+
+.mainSidebar ul {
+  padding-left: 0px;
+}
+
+.mainSidebar li{
+  height: 32px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+}
+
+.mainSidebar li:hover i {
+  color: rgb(85, 140, 211);
+}
+
+.mainSidebar li a{
+  color: #e7dbdb;
+  text-decoration: none;
+  display: block;
+}
+
+.mainSidebar li:first-child {
+  font-size: 18px;
+  padding-left: 5px;
+  background-color: #a4a4a4;
+  color: white;
+}
+
+.mainSidebar .active {
+  background-color: #636363;
+}
+
+.mainSidebar .active i {
+  color: rgb(85, 140, 211);
+}
