@@ -42,7 +42,7 @@ class ProjectList extends Component {
   }
 
   renderBreadCrumb() {
-    const { crumbs } = this.props;
+    const { crumbs, projects } = this.props;
     return (
       <Breadcrumb>
         {crumbs.map((crumb, i) => {
