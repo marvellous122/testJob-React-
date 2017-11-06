@@ -1,12 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Breadcrumb } from 'react-bootstrap';
+import { Breadcrumb, Modal, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import { Row, Col } from 'react-bootstrap';
+import { newProject } from '../../../actions';
 
 class ProjectList extends Component {
-  state = {};
+  state = {
+    showModal: false,
+    projectText: ''
+  };
+
+  close() {
+    this.setState({ showModal: false });
+  }
+
+  open() {
+    this.setState({ showModal: true });
+  }
+
+  add() {
+    this.props.newProject(this.state.projectText);
+    this.close();
+  }
+
+  updateText(evt) {
+    this.setState({
+      projectText: evt.target.value
+    })
+  }
 
   renderHeader() {
     const { title, subtitle } = this.props;
@@ -36,6 +59,8 @@ class ProjectList extends Component {
             </LinkContainer>
           );
         })}
+        <span style={style.spanStyle}>{projects.length}</span>
+        <button style={style.addProjectStyle} onClick={this.open.bind(this)}>+ New Project</button>
       </Breadcrumb>);
   }
 
@@ -44,6 +69,19 @@ class ProjectList extends Component {
       <div className="projects">
         {this.renderBreadCrumb()}
         {this.renderHeader()}
+        <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Add Project</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h4>New Project</h4>
+            <input type="text" onChange={this.updateText.bind(this)} />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.add.bind(this)}>Add</Button>
+            <Button onClick={this.close.bind(this)}>Close</Button>
+          </Modal.Footer>
+        </Modal>
         <Row>
           <Col xs={12} xsOffset={0} sm={8} md={6} mdOffset={1}>
             <ul>
@@ -67,6 +105,15 @@ const style = {
     borderBottom: '1px solid #ccc',
     marginTop: 20,
     marginBottom: 10
+  },
+  addProjectStyle: {
+    float: `right`,
+    cursor: 'pointer',
+    border: 'none',
+    backgroundColor: 'transparent'
+  },
+  spanStyle: {
+    float: 'right'
   }
 };
 
@@ -76,4 +123,8 @@ const mapStateToProps = ({ project: { projects } }) => {
   };
 };
 
-export default connect(mapStateToProps)(ProjectList);
+const mapDispatchToProps = {
+  newProject
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectList);
