@@ -1,5 +1,5 @@
 import { compose, combineReducers, createStore, applyMiddleware } from 'redux';
-import { autoRehydrate } from 'redux-persist';
+import { persistStore, autoRehydrate } from 'redux-persist';
 import thunk from 'redux-thunk';
 
 import project from './project';
@@ -12,5 +12,7 @@ const reducers = combineReducers({
 });
 
 const store = createStore(reducers, {}, compose(applyMiddleware(thunk), autoRehydrate()));
+
+persistStore(store);
 
 export default store;
